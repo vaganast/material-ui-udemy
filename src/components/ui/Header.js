@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
@@ -6,7 +6,6 @@ import { makeStyles } from "@material-ui/styles";
 import { Tabs } from "@material-ui/core";
 import { Tab } from "@material-ui/core";
 import { Button } from "@material-ui/core";
-import { Link } from "react-router-dom";
 
 import logo from "../../assets/logo.svg";
 
@@ -29,13 +28,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "3em",
   },
   logo: {
-    height: "8em",
-  },
-  logoContainer: {
-    padding: 0,
-    "&:hoover": {
-      backgroundColor: "transparent"
-    }
+    height: "7em",
   },
   tabContainer: {
     marginLeft: "auto",
@@ -63,77 +56,24 @@ export default function Header(props) {
     setValue(value);
   };
 
-  useEffect(()=>{
-    if(window.location.pathname === "/" && value !==0 ) {
-      setValue(0)
-    }
-   else if(window.location.pathname === "/Services" && value !==1 ) {
-   setValue(1)
-   } else if(window.location.pathname === "/Revolution" && value !==2 ) {
-    setValue(2)
-    } else if(window.location.pathname === "/About" && value !==3 ) {
-      setValue(3)
-    }  else if(window.location.pathname === "/Contact" && value !==4 ) {
-      setValue(4)
-    } else if(window.location.pathname === "/Estimate" && value !==5 ) {
-      setValue(5)
-    }
-  }, [value] )
-  
-
   return (
     <React.Fragment>
       <ElevationScroll>
         <AppBar position="fixed" color="primary">
           <Toolbar disableGutters>
-            <Button 
-            component={Link} 
-            to="/" 
-            disableRipple
-            onClick={()=> setValue(0)}
-            className={classes.logoContainer}>
             <img alt="company logo" className={classes.logo} src={logo} />
-            </Button>
             <Tabs
               value={value}
               onChange={handleChange}
               className={classes.tabContainer}
               indicatorColor="primary" //indicator default change to primary color to hide
             >
-              <Tab 
-              className={classes.tab}
-              component={Link} 
-              to="/" 
-              label="Home" />
-
-              <Tab 
-              className={classes.tab} 
-              component={Link} 
-              to="/Services" 
-              label="Services" />
-
-              <Tab
-                className={classes.tab}
-                component={Link}
-                to="/Revolution"
-                label="The Revolution"
-              />
-
-              <Tab 
-              className={classes.tab} 
-              component={Link} 
-              to="/About" 
-              label="About us" />
-
-              <Tab
-                className={classes.tab}
-                component={Link}
-                to="/Contact"
-                label="Contact Us"
-              />
-
+              <Tab className={classes.tab} label="Home" />
+              <Tab className={classes.tab} label="Services" />
+              <Tab className={classes.tab} label="The Revolution" />
+              <Tab className={classes.tab} label="About us" />
+              <Tab className={classes.tab} label="Contact Us" />
             </Tabs>
-
             <Button
               variant="contained"
               color="secondary"
