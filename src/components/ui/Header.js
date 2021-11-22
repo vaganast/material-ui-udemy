@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
   },
   logoContainer: {
     padding: 0,
-    '&:hoover': {
+    '&:hover': {
       backgroundColor: 'transparent',
     },
   },
@@ -53,6 +53,18 @@ const useStyles = makeStyles(theme => ({
     marginLeft: '50px',
     marginRight: '25px',
     height: '45px',
+  },
+  menu: {
+    backgroundColor: theme.palette.common.blue,
+    color: 'white',
+    borderRadius: '0px',
+  },
+  menuItem: {
+    ...theme.typography.tab,
+    opacity: 0.7,
+    '&:hover': {
+      opacity: 1,
+    },
   },
 }));
 
@@ -166,18 +178,22 @@ export default function Header(props) {
               anchorEl={anchorEl}
               open={open}
               onClose={handleClose}
+              classes={{ paper: classes.menu }}
               MenuListProps={{ onMouseLeave: handleClose }}
+              elevation={0}
             >
-              <MenuItem
+              <MenuItem //menuitem extra for fixing the hiding services tab
                 onClick={() => {
                   handleClose();
                   setValue(1);
                 }}
                 component={Link}
                 to='/services'
+                classes={{ root: classes.menuItem }}
               >
                 Services
               </MenuItem>
+
               <MenuItem
                 onClick={() => {
                   handleClose();
@@ -185,9 +201,11 @@ export default function Header(props) {
                 }}
                 component={Link}
                 to='/customsoftware'
+                classes={{ root: classes.menuItem }}
               >
                 Custom Software Development
               </MenuItem>
+
               <MenuItem
                 onClick={() => {
                   handleClose();
@@ -195,9 +213,11 @@ export default function Header(props) {
                 }}
                 component={Link}
                 to='/mobileapps'
+                classes={{ root: classes.menuItem }}
               >
                 Mobile App Development{' '}
               </MenuItem>
+
               <MenuItem
                 onClick={() => {
                   handleClose();
@@ -205,6 +225,7 @@ export default function Header(props) {
                 }}
                 component={Link}
                 to='/websites'
+                classes={{ root: classes.menuItem }}
               >
                 Website Development{' '}
               </MenuItem>
