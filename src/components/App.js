@@ -1,26 +1,42 @@
-import React from "react";
-import { ThemeProvider } from "@material-ui/styles";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import theme from "./ui/Theme";
+import React from 'react';
+import { ThemeProvider } from '@material-ui/styles';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import theme from './ui/Theme';
 
-import Header from "./ui/Header";
+import Header from './ui/Header';
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Header />
-        <Routes>
-          <Route exact path="/"  />
-          <Route exact path="/services"  />
-          <Route exact path="/customsoftware"  />
-          <Route exact path="/mobileapps"  />
-          <Route exact path="/websites"  />
-          <Route exact path="/revolution"  />
-          <Route exact path="/about"  />
-          <Route exact path="/contact"  />
-          <Route exact path="/estimate" />
-        </Routes>
+        <Switch>
+          <Route exact path='/' component={() => <div>Home</div>} />
+          <Route exact path='/services' component={() => <div>Services</div>} />
+          <Route
+            exact
+            path='/customsoftware'
+            component={() => <div>Custom Software</div>}
+          />
+          <Route
+            exact
+            path='/mobileapps'
+            component={() => <div>Mobile Apps</div>}
+          />
+          <Route exact path='/websites' component={() => <div>Websites</div>} />
+          <Route
+            exact
+            path='/revolution'
+            component={() => <div>The Revolution</div>}
+          />
+          <Route exact path='/about' component={() => <div>About Us</div>} />
+          <Route
+            exact
+            path='/contact'
+            component={() => <div>Contact Us</div>}
+          />
+          <Route exact path='/estimate' component={() => <div>Estimate</div>} />
+        </Switch>
       </BrowserRouter>
     </ThemeProvider>
   );
