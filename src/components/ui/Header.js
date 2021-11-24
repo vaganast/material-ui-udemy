@@ -252,6 +252,7 @@ export default function Header(props) {
       >
         Free Estimate
       </Button>
+
       <Menu
         id='simple-menu'
         anchorEl={anchorEl}
@@ -265,7 +266,7 @@ export default function Header(props) {
       >
         {menuOptions.map((option, i) => (
           <MenuItem
-            key={option}
+            key={`${option}${i}`}
             component={Link}
             to={option.link}
             classes={{ root: classes.menuItem }}
